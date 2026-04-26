@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User-Event Registration</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 380px;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c5364;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #2c5364;
+            outline: none;
+            box-shadow: 0 0 5px rgba(44, 83, 100, 0.5);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            transform: scale(1.03);
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .success {
+            color: #27ae60;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🎉 Event Registration</h2>
+
+    <form method="POST" onsubmit="return validateForm()">
+        
+        <label>Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label>Email:</label>
+        <input type="email" id="email" name="email">
+
+        <div id="error" class="error"></div>
+
+        <input type="submit" value="Register Now">
+    </form>
+
+    <div id="success" class="success"></div>
+</div>
+
+<script>
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let error = document.getElementById("error");
+    let success = document.getElementById("success");
+
+    error.innerHTML = "";
+    success.innerHTML = "";
+
+    if (name === "" || email === "") {
+        error.innerHTML = "⚠ Please fill all fields!";
+        return false;
+    }
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+        error.innerHTML = "⚠ Enter a valid email!";
+        return false;
+    }
+
+    success.innerHTML = "✅ Successfully Registered!";
+    return true;
+}
+</script>
+
+</body>
+</html>
