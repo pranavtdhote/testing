@@ -2,4 +2,4 @@ npm init -y
 npm install selenium-webdriver
 
 docker build -t flask-registration .
-docker run -d -p 5000:5000 flask-registration
+docker run -d -p 6000:6000 flask-registration

@@ -11,7 +11,7 @@ function sleep(ms) {
     try {
 
         // ===== TC1 =====
-        await driver.get('http://localhost:5000');
+        await driver.get('http://localhost:6000');
         console.log("Opened page...");
         await sleep(2000);
 
