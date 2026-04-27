@@ -34,7 +34,7 @@ function sleep(ms) {
             body1.includes('Registration Successful') ? "PASS" : "FAIL");
 
         // ===== TC3: Empty Input =====
-        await driver.get('http://localhost:5000');  
+        await driver.get('http://localhost:6000');  
         await sleep(2000);
 
         await driver.findElement(By.css("input[type='submit']")).click();
@@ -46,7 +46,7 @@ function sleep(ms) {
                 ? "PASS" : "CHECK MANUALLY");
 
         // ===== TC4 =====
-        await driver.get('http://localhost:5000');
+        await driver.get('http://localhost:6000');
         await sleep(2000);
 
         let body4 = await driver.findElement(By.tagName('body')).getText();
